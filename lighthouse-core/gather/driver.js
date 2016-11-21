@@ -151,7 +151,10 @@ class Driver {
       }).then(result => {
         clearTimeout(asyncTimeout);
         resolve(result.result.value);
-      }).catch(reject);
+      }).catch(err => {
+        clearTimeout(asyncTimeout);
+        reject(err);
+      });
     });
   }
 
